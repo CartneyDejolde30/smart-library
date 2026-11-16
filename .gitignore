@@ -1,0 +1,16 @@
+# Local credentials: copy config/database.example.php to config/database.php and edit
+/config/database.php
+
+# User-uploaded files (student photos, school logo) and backups contain personal data
+/uploads/books/*
+/uploads/students/*
+/uploads/school/*
+!/uploads/*/.gitkeep
+/storage/backups/*
+!/storage/backups/.gitkeep
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

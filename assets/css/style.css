@@ -1,0 +1,64 @@
+:root{--navy:#0b1f3a;--navy-2:#12305c;--blue:#1d4ed8;--bg:#f4f6fa;--radius:14px;--sidebar-w:250px;--top-h:56px}
+body{background:var(--bg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1e293b;
+  padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+.btn{border-radius:10px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:.25rem}
+.btn-sm{min-height:34px}
+.btn-primary{background:var(--blue);border-color:var(--blue)}
+.form-control,.form-select{border-radius:10px;min-height:44px}
+.card{border:0;border-radius:var(--radius);box-shadow:0 1px 3px rgba(15,23,42,.08),0 4px 14px rgba(15,23,42,.04)}
+.sl-topbar{position:fixed;top:0;left:0;right:0;height:var(--top-h);background:var(--navy);color:#fff;z-index:1030;
+  display:flex;align-items:center;padding:0 1rem;padding-top:env(safe-area-inset-top)}
+.sl-topbar-brand{color:#fff;text-decoration:none;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55vw}
+.sl-shell{padding-top:calc(var(--top-h) + env(safe-area-inset-top))}
+.sl-sidebar{background:linear-gradient(180deg,var(--navy),var(--navy-2));--bs-offcanvas-width:270px;--bs-offcanvas-bg:transparent;color:#cbd5e1}
+.sl-brand{align-items:center;height:56px;padding:0 1.25rem;color:#fff;font-weight:700;font-size:1.05rem}
+.sl-link{color:#cbd5e1;border-radius:10px;padding:.7rem .9rem;margin-bottom:2px;transition:background .15s,color .15s}
+.sl-link:hover{background:rgba(255,255,255,.08);color:#fff}
+.sl-link.active{background:var(--blue);color:#fff}
+.sl-main{padding:1rem;min-width:0}
+.sl-page-head{margin-bottom:1rem}
+@media(min-width:992px){
+  .sl-sidebar{position:fixed;top:var(--top-h);bottom:0;left:0;width:var(--sidebar-w);overflow-y:auto;z-index:1020;visibility:visible!important;transform:none!important}
+  .sl-sidebar .sl-brand{display:none!important}
+  .sl-main{margin-left:var(--sidebar-w);padding:1.5rem}
+}
+.stat-card{display:flex;align-items:center;gap:1rem;padding:1rem 1.1rem}
+.stat-icon{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;font-size:1.4rem;background:#e0e7ff;color:var(--blue)}
+.stat-value{font-size:1.6rem;font-weight:700;line-height:1}
+.empty-state{text-align:center;padding:2.5rem 1rem;color:#64748b}
+.empty-state i{font-size:2.5rem;opacity:.6}
+/* login / install */
+.sl-bare{min-height:100vh;display:grid;place-items:center;padding:1rem;
+  background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 60%,#1e3a8a 100%)}
+.auth-card{width:100%;max-width:420px;padding:1.75rem}
+.auth-logo{width:64px;height:64px;border-radius:18px;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:2rem;margin:0 auto 1rem}
+/* responsive tables -> cards on phones (add class .table-cards, td data-label="...") */
+@media(max-width:575.98px){
+  .table-cards thead{display:none}
+  .table-cards tr{display:block;margin-bottom:.75rem;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08);padding:.5rem .75rem}
+  .table-cards td{display:flex;justify-content:space-between;gap:1rem;border:0;padding:.35rem 0;text-align:right}
+  .table-cards td::before{content:attr(data-label);font-weight:600;color:#64748b;text-align:left}
+}
+@media print{.sl-topbar,.sl-sidebar,.no-print,.toast-container{display:none!important}.sl-main{margin:0!important;padding:0!important}.sl-shell{padding-top:0}}
+/* QR labels & ID cards */
+.label-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.qr-label{background:#fff;border:1px dashed #94a3b8;border-radius:8px;padding:10px;text-align:center;break-inside:avoid;page-break-inside:avoid}
+.qr-label .qr-box{display:inline-block;line-height:0;padding:4px;background:#fff}
+.qr-label .t{font-size:.8rem;font-weight:600;line-height:1.2;margin-top:6px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.qr-label .a{font-size:.7rem;color:#475569;font-family:monospace}
+.id-card{width:340px;max-width:100%;background:#fff;border-radius:14px;overflow:hidden;border:1px solid #cbd5e1;break-inside:avoid;page-break-inside:avoid}
+.id-card .hd{background:var(--navy);color:#fff;padding:.6rem .9rem;font-weight:600;font-size:.9rem}
+.id-card img.ph{width:84px;height:84px;object-fit:cover;border-radius:10px;background:#e2e8f0}
+/* Scanner */
+.sl-reader{width:100%;min-height:240px;background:#0b1f3a;border-radius:12px;overflow:hidden}
+.sl-reader video{border-radius:12px}
+.scan-item{display:flex;justify-content:space-between;align-items:center;gap:.5rem;padding:.6rem .75rem;border:1px solid #e2e8f0;border-radius:10px;background:#fff;margin-bottom:.5rem}
+
+/* School seal: watermark + logos */
+.sl-watermark{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(70vw,560px);height:auto;opacity:.07;pointer-events:none;user-select:none;z-index:2000}
+@media print{.sl-watermark{display:block!important;width:62%;opacity:.10;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+.sl-logo{height:34px;width:auto;max-width:56px;object-fit:contain;flex-shrink:0}
+.id-card .hd .sl-logo{height:30px;background:#fff;border-radius:8px;padding:2px 4px}
+.auth-seal{display:block;width:150px;max-width:60%;height:auto;margin:0 auto 1rem}
+/* keep QR codes and the camera preview above the watermark so scanning is never affected */
+[data-qr],.sl-reader{position:relative;z-index:2001}

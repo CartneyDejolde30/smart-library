@@ -1,0 +1,4 @@
+<?php
+require_once __DIR__ . '/../../includes/auth.php';
+$user = require_role('librarian', 'admin');
+require __DIR__ . '/../../includes/reports_page.php';
